@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        width: 100%;
+        padding: 12px;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        background: #f9f9f9;
+        box-sizing: border-box;
+        overflow-x: hidden;
+      }
+
+      h3 {
+        color: #333;
+        margin-top: 0;
+        border-bottom: 2px solid #4285f4;
+        padding-bottom: 10px;
+      }
+
+      .section {
+        background: white;
+        margin: 8px 0;
+        padding: 12px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+      }
+
+      .section h4 {
+        margin-top: 0;
+        color: #555;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      button {
+        width: 100%;
+        padding: 8px;
+        margin: 6px 0;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        background: #f8f9fa;
+        cursor: pointer;
+        font-size: 13px;
+        transition: all 0.2s;
+        box-sizing: border-box;
+      }
+
+      button:hover {
+        background: #e9ecef;
+        border-color: #4285f4;
+      }
+
+      button:active {
+        background: #dee2e6;
+        transform: translateY(1px);
+      }
+
+      button.primary {
+        background: #4285f4;
+        color: white;
+        border-color: #4285f4;
+      }
+
+      button.primary:hover {
+        background: #3367d6;
+      }
+
+      button.danger {
+        background: #dc3545;
+        color: white;
+        border-color: #dc3545;
+      }
+
+      button.danger:hover {
+        background: #c82333;
+      }
+
+      #status {
+        margin-top: 12px;
+        padding: 8px;
+        font-size: 12px;
+        color: #666;
+        background: #e9ecef;
+        border-radius: 4px;
+        border-left: 4px solid #4285f4;
+        word-wrap: break-word;
+        box-sizing: border-box;
+      }
+
+      input {
+        width: 100%;
+        padding: 6px;
+        margin: 6px 0;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 13px;
+        box-sizing: border-box;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #4285f4;
+        box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+      }
+
+      .status-connected {
+        border-left-color: #28a745;
+        background: #d4edda;
+        color: #155724;
+      }
+
+      .status-error {
+        border-left-color: #dc3545;
+        background: #f8d7da;
+        color: #721c24;
+      }
+
+      button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        background: #f0f0f0 !important;
+        color: #999 !important;
+      }
+
+      button.primary:disabled {
+        background: #ccc !important;
+        border-color: #ccc !important;
+      }
+
+      button.danger:disabled {
+        background: #ccc !important;
+        border-color: #ccc !important;
+      }
+
+      input:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+        background: #f0f0f0 !important;
+        color: #999 !important;
+        border-color: #ddd !important;
+      }
+
+      .tab-info {
+        background: #e8f0fe;
+        border: 1px solid #4285f4;
+        border-radius: 4px;
+        padding: 8px;
+        margin: 6px 0;
+        font-size: 12px;
+        color: #1a73e8;
+        word-wrap: break-word;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .tab-info .tab-icon {
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+
+      .tab-info .tab-title {
+        flex: 1;
+        font-weight: 500;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .tab-info .tab-url {
+        font-size: 10px;
+        color: #5f6368;
+        opacity: 0.8;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>🔧 Browser Controller</h3>
+
+    <div class="section">
+      <h4>Debugger Control</h4>
+      <button id="attachDebugger" class="primary">Attach Debugger</button>
+      <button id="detachDebugger" class="danger">Detach Debugger</button>
+    </div>
+
+    <div class="section">
+      <h4>Navigation</h4>
+      <input
+        type="text"
+        id="urlInput"
+        placeholder="Enter URL (e.g., https://example.com)"
+      />
+      <button id="navigate">Navigate to URL</button>
+    </div>
+
+    <div class="section">
+      <h4>Current Tab</h4>
+      <div class="tab-info" id="tabInfo">
+        <span class="tab-icon">📑</span>
+        <span class="tab-title" id="tabTitle">Loading...</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h4>Page Actions</h4>
+      <button id="screenshot">📸 Take Screenshot</button>
+      <button id="getTitle">📄 Get Page Title</button>
+      <button id="getContent">📝 Get Page Content</button>
+    </div>
+
+    <div class="section">
+      <h4>Advanced Actions</h4>
+      <button id="executeScript">⚡ Execute Custom Script</button>
+      <button id="getConsoleLog">📋 Get Console Logs</button>
+    </div>
+
+    <div id="status">Ready - Click 'Attach Debugger' to start</div>
+
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Browser Controller",
+  "version": "1.0",
+  "description": "Minimal browser controller using Chrome debugger API",
+  "permissions": ["debugger", "tabs", "activeTab", "sidePanel"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Browser Controller"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  }
+}
